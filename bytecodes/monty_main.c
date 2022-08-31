@@ -1,5 +1,47 @@
 #include "monty.h"
 
+int main(int arg, char *argv[])
+{
+	stack_t *stack = NULL;
+	unsigned int line_number = 0;
+	FILE *_file = NULL;
+	char *lineptr = NULL, *code = NULL;
+	size_t len = 0;
+
+	if (argc != 2)
+	{
+		dprintf(STDOUT_FILENO, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
+	_file = fopen(argv[1], "r");
+	if (_file == NULL)
+	{
+		dprintf(STDOUT_FILENO, "Error: Can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
+	}
+	while (getline(&lineptr, &len, _file) != -1)
+	{
+		code = strtok(lineptr, " \n\v\f\t\r");
+		if (code != NULL && code[0] != '#')
+			get_op(&stack, line_number, code);
+		line_number++;
+	}
+	/*add free*/
+	exit(EXIT_SUCCESS);
+}
+
+void free(stack_t *head)
+{
+	stack_t *tmp;
+	while (head != NULL)
+	{
+		tmp = head->next;
+		free(head);
+		head = tmp;
+	}
+}
+
+
 
 void get_op(char *code, stack_t **stack, unsigned int line_number)
 {
@@ -14,13 +56,13 @@ void get_op(char *code, stack_t **stack, unsigned int line_number)
 		{"nop", _nop},
 		{"sub", _sub},
 		{"div", _div},
-        {"mul", _mul},
+		{"mul", _mul},
 		{"mod", _mod},
 		{"pchar", _pchar},
 		{"pstr", _pstr},
-        {"rotl", rotl},
-		{"rotr", rotr},
-        {"stack", _stack},
+		{"rotl", _rotl},
+		{"rotr", _rotr},
+		{"stack", _stack},
 		{"queue", _queue},
 		{NULL, NULL}
 	};
