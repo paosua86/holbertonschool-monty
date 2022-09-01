@@ -1,33 +1,45 @@
 #include "monty.h"
 
-void _push(stack_t **stack, unsigned int line_number);
+void _push(stack_t **stack, unsigned int line_number)
 {
-	int i;
+	size_t i;
+	size_t len = 0;
 	char *arg;
-	
-	arg = strtok(NULL, " \t\r\n\v\f")
-	if (argument == NULL)
+
+	arg = strtok(NULL, " \t\r\n\v\f");
+	if (arg == NULL)
 	{
-		dprintf(STDOUT_FILENO, "L%u: usage: push integer\n", argv[1]);
-		/*free*/
+		dprintf(STDOUT_FILENO, "L%u: usage: push integer\n", line_number);
+		
 		exit(EXIT_FAILURE);
+	}
+	len = strlen(arg);
+	for (i = 0; i < len; i++)
+	{
+		if (!isdigit(arg[i]) && arg[0] != '-')
+		{
+			dprintf(STDOUT_FILENO, "L%u: usage: push integer\n", line_number);
+			/* free */
+			exit(EXIT_FAILURE);
+		}
+		add_node(stack, atoi(arg));
 	}
 }
 
 
-void _pall(stack_t **stack, unsigned int line_number);
-void _pint(stack_t **stack, unsigned int line_number);
-void _pop(stack_t **stack, unsigned int line_number);
-void _swap(stack_t **stack, unsigned int line_number);
-void _add(stack_t **stack, unsigned int line_number);
-void _nop(stack_t **stack, unsigned int line_number);
-void _sub(stack_t **stack, unsigned int line_number);
-void _div(stack_t **stack, unsigned int line_number);
-void _mul(stack_t **stack, unsigned int line_number);
-void _mod(stack_t **stack, unsigned int line_number);
-void _pchar(stack_t **stack, unsigned int line_number);
-void _pstr(stack_t **stack, unsigned int line_number);
-void _rotl(stack_t **stack, unsigned int line_number);
-void _rotr(stack_t **stack, unsigned int line_number);
-void _stack(stack_t **stack, unsigned int line_number);
-void _queue(stack_t **stack, unsigned int line_number);
+void _pall(stack_t **stack, unsigned int line_number)
+{
+	stack_t *pall;
+	(void) line_number;
+
+	pall = *stack;
+	while (pall != NULL)
+	{
+		printf("%d\n", pall->n);
+		pall = pall->next;
+		if (pall == *stack)
+		{
+			return;
+		}
+	}
+}

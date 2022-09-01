@@ -1,14 +1,16 @@
 #include "monty.h"
 
+char **opcode = NULL;
+
 int main(int arg, char *argv[])
 {
 	stack_t *stack = NULL;
-	unsigned int line_number = 0;
+	unsigned int line_number = 1;
 	FILE *_file = NULL;
 	char *lineptr = NULL, *code = NULL;
 	size_t len = 0;
 
-	if (argc != 2)
+	if (arg != 2)
 	{
 		dprintf(STDOUT_FILENO, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
@@ -19,7 +21,7 @@ int main(int arg, char *argv[])
 		dprintf(STDOUT_FILENO, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	while (getline(&lineptr, &len, _file) != -1)
+	while (getline(&lineptr, &len, _file) != EOF)
 	{
 		code = strtok(lineptr, " \n\v\f\t\r");
 		if (code != NULL && code[0] != '#')
@@ -28,9 +30,11 @@ int main(int arg, char *argv[])
 	}
 	/*add free*/
 	exit(EXIT_SUCCESS);
+	
 }
 
-void free(stack_t *head)
+
+/* void free(stack_t *head)
 {
 	stack_t *tmp;
 	while (head != NULL)
@@ -39,17 +43,18 @@ void free(stack_t *head)
 		free(head);
 		head = tmp;
 	}
-}
+	return (0);
+}*/
 
 
 
-void get_op(char *code, stack_t **stack, unsigned int line_number)
+void get_op(stack_t **stack, unsigned int line_number, char *code)
 {
 	int i;
 	instruction_t valid_opt[] = {
 		{"push", _push},
 		{"pall", _pall},
-		{"pint", _pint},
+		/*{"pint", _pint},
 		{"pop", _pop},
 		{"swap", _swap},
 		{"add", _add},
@@ -63,11 +68,11 @@ void get_op(char *code, stack_t **stack, unsigned int line_number)
 		{"rotl", _rotl},
 		{"rotr", _rotr},
 		{"stack", _stack},
-		{"queue", _queue},
+		{"queue", _queue}, */
 		{NULL, NULL}
 	};
 
-	for (i = 0; valid_opt[i].opcode; i++)
+	for (i = 0; valid_opt[i].opcode != NULL; i++)
 	{
 		if (strcmp(valid_opt[i].opcode, code) == 0)
 		{
