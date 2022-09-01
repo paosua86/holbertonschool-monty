@@ -6,6 +6,9 @@
 #include <string.h>
 #include <ctype.h>
 #include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -55,8 +58,8 @@ void _rotr(stack_t **stack, unsigned int line_number);
 void _stack(stack_t **stack, unsigned int line_number);
 void _queue(stack_t **stack, unsigned int line_number);
 
-void get_op(char *code, stack_t **stack, unsigned int line_number);
-
+void get_op(stack_t **stack, unsigned int line_number, char *code);
+stack_t *add_node(stack_t **stack, int arg);
 
 
 #endif /* #ifndef HEADER_FILE */
