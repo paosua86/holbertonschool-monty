@@ -17,7 +17,7 @@ void _push(stack_t **stack, unsigned int line_number)
 	if (arg == NULL)
 	{
 		dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
-		/* free? */
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	len = strlen(arg);
@@ -26,7 +26,7 @@ void _push(stack_t **stack, unsigned int line_number)
 		if (!isdigit(arg[i]) && arg[0] != '-')
 		{
 			dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
-			/* free? */
+			free_stack(*stack);
 			exit(EXIT_FAILURE);
 		}
 		add_node(stack, atoi(arg));
@@ -66,8 +66,32 @@ void _pint(stack_t **stack, unsigned int line_number)
 	if (*stack == NULL)
 	{
 		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n", line_number);
-		/*free?*/
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", pint->n);
+}
+
+/**
+ * _pop - removes the top element of the stack
+ * @stack: double pointer to header of the stack.
+ * @line_number: counter for line number of the file.
+ * Return: void
+ */
+
+void _pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *pop;
+
+	if (*stack == NULL)
+	{
+		dprintf(STDERR_FILENO, "L%d: can't pop an empty stack\n", line_number);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+	pop = *stack;
+	if ((*stack)->next)
+		(*stack)->next->prev = NULL;
+	*stack = (*stack)->next;
+	free(pop);
 }
