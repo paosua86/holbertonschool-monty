@@ -50,3 +50,4 @@ size_t stack_length(const stack_t *h)
 		h = h->next;
 	return (i);
 }
+
