@@ -16,7 +16,7 @@ void _push(stack_t **stack, unsigned int line_number)
 	if (arg == NULL)
 	{
 		dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
-		free_stack(*stack);
+		/*free_stack(*stack);*/
 		exit(EXIT_FAILURE);
 	}
 	for (i = 0; arg[i]; i++)
@@ -65,7 +65,7 @@ void _pint(stack_t **stack, unsigned int line_number)
 	if (*stack == NULL)
 	{
 		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n", line_number);
-		free_stack(*stack);
+		/*free_stack(*stack);*/
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", pint->n);
@@ -85,7 +85,7 @@ void _pop(stack_t **stack, unsigned int line_number)
 	if (*stack == NULL)
 	{
 		dprintf(STDERR_FILENO, "L%d: can't pop an empty stack\n", line_number);
-		free_stack(*stack);
+		/*free_stack(*stack);*/
 		exit(EXIT_FAILURE);
 	}
 	pop = *stack;
@@ -93,4 +93,31 @@ void _pop(stack_t **stack, unsigned int line_number)
 		(*stack)->next->prev = NULL;
 	*stack = (*stack)->next;
 	free(pop);
+}
+
+/**
+ * _swap - swaps the top two elements of the stack
+ * @stack: double pointer to header of the stack
+ * @line_number: counter for line number of the file
+ * Return: void
+ */
+
+void _swap(stack_t **stack, unsigned int line_number)
+{
+	stack_t *new_head = *stack;
+	stack_t *head = *stack;
+	size_t len = stack_length(*stack);
+
+	if (len < 2)
+	{
+		dprintf(STDERR_FILENO, "L%d: can't swap, stack too short\n", line_number);
+		/*free_stack(*stack);*/
+		exit(EXIT_FAILURE);
+	}
+	new_head = new_head->next;
+	head->next = new_head->next;
+	new_head->next = head;
+	new_head->prev = NULL;
+	head->prev = new_head;
+	*stack = new_head;
 }

@@ -31,8 +31,6 @@ int main(int arg, char *argv[])
 	while (getline(&lineptr, &len, _file) != -1)
 	{
 		code = strtok(lineptr, "\n\t\r ");
-		/*aqui*/
-		/*printf("%s\n", code);*/
 		if (code != NULL && code[0] != '#')
 		{
 			get_op(&stack, line_number, code);
@@ -79,7 +77,7 @@ void get_op(stack_t **stack, unsigned int line_number, char *code)
 		{"pall", _pall},
 		{"pint", _pint},
 		{"pop", _pop},
-		/*{"swap", _swap},*/
+		{"swap", _swap},
 		/*{"add", _add},*/
 		/*{"nop", _nop},*/
 		/*{"sub", _sub},*/
