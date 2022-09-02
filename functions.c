@@ -54,5 +54,5 @@ void _pint(stack_t **stack, unsigned int line_number)
 		/*free?*/
 		exit(EXIT_FAILURE);
 	}
-	printf("%d", pint->n);
+	printf("%d\n", pint->n);
 }
