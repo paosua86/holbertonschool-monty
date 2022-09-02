@@ -12,13 +12,13 @@ int main(int arg, char *argv[])
 
 	if (arg != 2)
 	{
-		dprintf(STDOUT_FILENO, "USAGE: monty file\n");
+		dprintf(STDERR_FILENO, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	_file = fopen(argv[1], "r");
 	if (_file == NULL)
 	{
-		dprintf(STDOUT_FILENO, "Error: Can't open file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 	while (getline(&lineptr, &len, _file) != EOF)
@@ -81,7 +81,7 @@ void get_op(stack_t **stack, unsigned int line_number, char *code)
 		}
 	}
 
-	dprintf(STDOUT_FILENO, "L%u: unknown instruction %s\n",
+	dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n",
 		line_number, code);
 	exit(EXIT_FAILURE);
 }
