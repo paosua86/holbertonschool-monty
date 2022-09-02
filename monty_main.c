@@ -80,7 +80,7 @@ void get_op(stack_t **stack, unsigned int line_number, char *code)
 		{"swap", _swap},
 		{"add", _add},
 		{"nop", _nop},
-		/*{"sub", _sub},*/
+		{"sub", _sub},
 		/*{"div", _div},*/
 		/*{"mul", _mul},*/
 		/*{"mod", _mod},*/
