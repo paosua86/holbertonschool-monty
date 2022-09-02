@@ -78,8 +78,8 @@ void get_op(stack_t **stack, unsigned int line_number, char *code)
 		{"pint", _pint},
 		{"pop", _pop},
 		{"swap", _swap},
-		/*{"add", _add},*/
-		/*{"nop", _nop},*/
+		{"add", _add},
+		{"nop", _nop},
 		/*{"sub", _sub},*/
 		/*{"div", _div},*/
 		/*{"mul", _mul},*/

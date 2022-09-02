@@ -16,7 +16,6 @@ void _push(stack_t **stack, unsigned int line_number)
 	if (arg == NULL)
 	{
 		dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
-		/*free_stack(*stack);*/
 		exit(EXIT_FAILURE);
 	}
 	for (i = 0; arg[i]; i++)
@@ -65,7 +64,6 @@ void _pint(stack_t **stack, unsigned int line_number)
 	if (*stack == NULL)
 	{
 		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n", line_number);
-		/*free_stack(*stack);*/
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", pint->n);
@@ -85,7 +83,6 @@ void _pop(stack_t **stack, unsigned int line_number)
 	if (*stack == NULL)
 	{
 		dprintf(STDERR_FILENO, "L%d: can't pop an empty stack\n", line_number);
-		/*free_stack(*stack);*/
 		exit(EXIT_FAILURE);
 	}
 	pop = *stack;
@@ -111,7 +108,6 @@ void _swap(stack_t **stack, unsigned int line_number)
 	if (len < 2)
 	{
 		dprintf(STDERR_FILENO, "L%d: can't swap, stack too short\n", line_number);
-		/*free_stack(*stack);*/
 		exit(EXIT_FAILURE);
 	}
 	new_head = new_head->next;
