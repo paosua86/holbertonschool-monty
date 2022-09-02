@@ -10,7 +10,7 @@ void _push(stack_t **stack, unsigned int line_number)
 	if (arg == NULL)
 	{
 		dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
-		/* free */
+		/* free? */
 		exit(EXIT_FAILURE);
 	}
 	len = strlen(arg);
@@ -19,7 +19,7 @@ void _push(stack_t **stack, unsigned int line_number)
 		if (!isdigit(arg[i]) && arg[0] != '-')
 		{
 			dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
-			/* free */
+			/* free? */
 			exit(EXIT_FAILURE);
 		}
 		add_node(stack, atoi(arg));
@@ -37,9 +37,22 @@ void _pall(stack_t **stack, unsigned int line_number)
 	{
 		printf("%d\n", pall->n);
 		pall = pall->next;
-		if (pall == *stack)
+		if (pall == NULL)
 		{
 			return;
 		}
 	}
+}
+
+void _pint(stack_t **stack, unsigned int line_number)
+{
+	stack_t *pint = *stack;
+
+	if (*stack == NULL)
+	{
+		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n", line_number);
+		/*free?*/
+		exit(EXIT_FAILURE);
+	}
+	printf("%d", pint->n);
 }

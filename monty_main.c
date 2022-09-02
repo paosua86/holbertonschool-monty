@@ -55,8 +55,8 @@ void get_op(stack_t **stack, unsigned int line_number, char *code)
 	instruction_t valid_opt[] = {
 		{"push", _push},
 		{"pall", _pall},
-		/*{"pint", _pint},
-		{"pop", _pop},
+		{"pint", _pint},
+		/*{"pop", _pop},
 		{"swap", _swap},
 		{"add", _add},
 		{"nop", _nop},
