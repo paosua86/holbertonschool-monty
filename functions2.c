@@ -105,6 +105,6 @@ void _mul(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	mul = mul->next;
-	mul->n /= (*stack)->n;
+	mul->n *= (*stack)->n;
 	_pop(stack, line_number);
 }
