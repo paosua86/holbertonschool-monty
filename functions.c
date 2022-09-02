@@ -29,7 +29,7 @@ void _push(stack_t **stack, unsigned int line_number)
 		}
 	}
 	add_node(stack, atoi(arg));
-} 
+}
 
 /**
  * _pall - print all values on stack starting from the top
@@ -38,7 +38,6 @@ void _push(stack_t **stack, unsigned int line_number)
  * Return: void
  */
 
- 
 void _pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *pall;
@@ -50,8 +49,7 @@ void _pall(stack_t **stack, unsigned int line_number)
 		printf("%d\n", pall->n);
 		pall = pall->next;
 	}
-} 
-
+}
 
 /**
  * _pint - prints the value at the top of the stack
