@@ -1,5 +1,13 @@
 #include "monty.h"
 
+/**
+ * add_node - adds the top two elements of the stack
+ * @stack: double pointer to header of the stack
+ * @argument: counter
+ *
+ * Return: void.
+ */
+
 stack_t *add_node(stack_t **stack, int argument)
 {
 	stack_t *new_node = NULL;
