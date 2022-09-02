@@ -49,3 +49,23 @@ void _pchar(stack_t **stack, unsigned int line_number)
 	}
     printf("%c\n", (*stack)->n);
 }
+
+/**
+ * _pstr - prints the string starting at the top of the stack
+ * @stack: double pointer to header of the stack.
+ * @line_number: counter for line number of the file.
+ * Return: void
+ */
+
+void _pstr(stack_t **stack, unsigned int line_number)
+{
+    stack_t *pstr = *stack;
+
+    (void) line_number;
+    while (pstr != NULL && pstr->n != 0 && pstr->n > 0 && pstr->n <= 127)
+    {
+		printf("%c", pstr->n);
+        pstr = pstr->next;
+    }
+    printf("\n");
+}
