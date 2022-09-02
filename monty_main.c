@@ -1,6 +1,13 @@
 #include "monty.h"
 
-char **opcode = NULL;
+
+
+/**
+ * main - Monty bytecode interpreter
+ * @arg: number of arguments passed as parameter
+ * @argv: array of strings with the parameters passed
+ * Return: EXIT_SUCCESS on success, EXIT_FAILURE on any failure
+ */
 
 int main(int arg, char *argv[])
 {
@@ -32,13 +39,18 @@ int main(int arg, char *argv[])
 	free(lineptr);
 	fclose(_file);
 	exit(EXIT_SUCCESS);
-	
 }
 
+/**
+ * free_stack - function that releases a list
+ * @head: pointer to a list type stack_t
+ * Return: void.
+ */
 
 void free_stack(stack_t *head)
 {
 	stack_t *tmp;
+
 	while (head != NULL)
 	{
 		tmp = head->next;
@@ -47,7 +59,13 @@ void free_stack(stack_t *head)
 	}
 }
 
-
+/**
+ * get_opcode - reads opcode and verifies if is valid
+ * @stack: double pointer to header of the stack
+ * @line_number: counter
+ * @code: opcode to execute
+  * Return: void.
+ */
 
 void get_op(stack_t **stack, unsigned int line_number, char *code)
 {
@@ -56,7 +74,8 @@ void get_op(stack_t **stack, unsigned int line_number, char *code)
 		{"push", _push},
 		{"pall", _pall},
 		{"pint", _pint},
-		/*{"pop", _pop},
+		/**
+		{"pop", _pop},
 		{"swap", _swap},
 		{"add", _add},
 		{"nop", _nop},
@@ -69,7 +88,8 @@ void get_op(stack_t **stack, unsigned int line_number, char *code)
 		{"rotl", _rotl},
 		{"rotr", _rotr},
 		{"stack", _stack},
-		{"queue", _queue}, */
+		{"queue", _queue},
+		*/
 		{NULL, NULL}
 	};
 
