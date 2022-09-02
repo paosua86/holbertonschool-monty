@@ -80,3 +80,26 @@ void _div(stack_t **stack, unsigned int line_number)
 	div->n /= (*stack)->n;
 	_pop(stack, line_number);
 }
+
+/**
+ * _mul - multiplies the second top element of the
+ * stack with the top element of the stack
+ * @stack: double pointer to header of the stack
+ * @line_number: counter for line number of the file
+ * Return: void
+ */
+
+void _mul(stack_t **stack, unsigned int line_number)
+{
+	stack_t *mul = *stack;
+	size_t len = stack_length(*stack);
+
+	if (len < 2)
+	{
+		dprintf(STDERR_FILENO, "L%d: can't mul, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	mul = mul->next;
+	mul->n /= (*stack)->n;
+	_pop(stack, line_number);
+}
