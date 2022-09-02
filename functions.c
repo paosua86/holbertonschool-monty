@@ -10,7 +10,7 @@ void _push(stack_t **stack, unsigned int line_number)
 	if (arg == NULL)
 	{
 		dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
-		
+		/* free */
 		exit(EXIT_FAILURE);
 	}
 	len = strlen(arg);

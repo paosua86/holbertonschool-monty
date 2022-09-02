@@ -28,13 +28,15 @@ int main(int arg, char *argv[])
 			get_op(&stack, line_number, code);
 		line_number++;
 	}
-	/*add free*/
+	free_stack(stack);
+	free(lineptr);
+	fclose(_file);
 	exit(EXIT_SUCCESS);
 	
 }
 
 
-/* void free(stack_t *head)
+void free_stack(stack_t *head)
 {
 	stack_t *tmp;
 	while (head != NULL)
@@ -43,8 +45,7 @@ int main(int arg, char *argv[])
 		free(head);
 		head = tmp;
 	}
-	return (0);
-}*/
+}
 
 
 

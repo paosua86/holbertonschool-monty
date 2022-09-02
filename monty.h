@@ -60,6 +60,6 @@ void _queue(stack_t **stack, unsigned int line_number);
 
 void get_op(stack_t **stack, unsigned int line_number, char *code);
 stack_t *add_node(stack_t **stack, int arg);
-
+void free_stack(stack_t *head);
 
 #endif /* #ifndef HEADER_FILE */
