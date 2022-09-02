@@ -57,3 +57,26 @@ void _sub(stack_t **stack, unsigned int line_number)
 	sub->n -= (*stack)->n;
 	_pop(stack, line_number);
 }
+
+/**
+ * _div -  divides the second top element of the stack
+ * by the top element of the stack
+ * @stack: double pointer to header of the stack
+ * @line_number: counter for line number of the file
+ * Return: void
+ */
+
+void _div(stack_t **stack, unsigned int line_number)
+{
+	stack_t *div = *stack;
+	size_t len = stack_length(*stack);
+
+	if (len < 2)
+	{
+		dprintf(STDERR_FILENO, "L%d: can't div, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	div = div->next;
+	div->n /= (*stack)->n;
+	_pop(stack, line_number);
+}
