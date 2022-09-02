@@ -9,7 +9,7 @@ void _push(stack_t **stack, unsigned int line_number)
 	arg = strtok(NULL, " \t\r\n\v\f");
 	if (arg == NULL)
 	{
-		dprintf(STDOUT_FILENO, "L%u: usage: push integer\n", line_number);
+		dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
 		
 		exit(EXIT_FAILURE);
 	}
@@ -18,7 +18,7 @@ void _push(stack_t **stack, unsigned int line_number)
 	{
 		if (!isdigit(arg[i]) && arg[0] != '-')
 		{
-			dprintf(STDOUT_FILENO, "L%u: usage: push integer\n", line_number);
+			dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
 			/* free */
 			exit(EXIT_FAILURE);
 		}
