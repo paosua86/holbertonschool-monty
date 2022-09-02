@@ -10,7 +10,6 @@
 void _push(stack_t **stack, unsigned int line_number)
 {
 	size_t i;
-	size_t len = 0;
 	char *arg;
 
 	arg = strtok(NULL, " \n\t\r");
@@ -20,8 +19,7 @@ void _push(stack_t **stack, unsigned int line_number)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-	len = strlen(arg);
-	for (i = 0; i < len; i++)
+	for (i = 0; arg[i]; i++)
 	{
 		if (!isdigit(arg[i]) && arg[0] != '-')
 		{
@@ -29,9 +27,9 @@ void _push(stack_t **stack, unsigned int line_number)
 			free_stack(*stack);
 			exit(EXIT_FAILURE);
 		}
-		add_node(stack, atoi(arg));
 	}
-}
+	add_node(stack, atoi(arg));
+} 
 
 /**
  * _pall - print all values on stack starting from the top
@@ -39,6 +37,8 @@ void _push(stack_t **stack, unsigned int line_number)
  * @line_number: line number being executed from script file
  * Return: void
  */
+
+ 
 void _pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *pall;
@@ -50,7 +50,8 @@ void _pall(stack_t **stack, unsigned int line_number)
 		printf("%d\n", pall->n);
 		pall = pall->next;
 	}
-}
+} 
+
 
 /**
  * _pint - prints the value at the top of the stack

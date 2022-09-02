@@ -28,9 +28,11 @@ int main(int arg, char *argv[])
 		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	while (getline(&lineptr, &len, _file) != EOF)
+	while (getline(&lineptr, &len, _file) != -1)
 	{
-		code = strtok(lineptr, " \n\t\r");
+		code = strtok(lineptr, "\n\t\r ");
+		/*aqui*/
+		/*printf("%s\n", code);*/
 		if (code != NULL && code[0] != '#')
 		{
 			get_op(&stack, line_number, code);
