@@ -30,10 +30,12 @@ int main(int arg, char *argv[])
 	}
 	while (getline(&lineptr, &len, _file) != EOF)
 	{
+		line_number++;
 		code = strtok(lineptr, " \n\t\r");
 		if (code != NULL && code[0] != '#')
+		{
 			get_op(&stack, line_number, code);
-		line_number++;
+		}
 	}
 	free_stack(stack);
 	free(lineptr);
@@ -60,7 +62,7 @@ void free_stack(stack_t *head)
 }
 
 /**
- * get_opcode - reads opcode and verifies if is valid
+ * get_op - reads opcode and verifies if is valid
  * @stack: double pointer to header of the stack
  * @line_number: counter
  * @code: opcode to execute
