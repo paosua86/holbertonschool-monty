@@ -30,7 +30,7 @@ int main(int arg, char *argv[])
 	}
 	while (getline(&lineptr, &len, _file) != EOF)
 	{
-		code = strtok(lineptr, " \n\v\f\t\r");
+		code = strtok(lineptr, " \n\t\r");
 		if (code != NULL && code[0] != '#')
 			get_op(&stack, line_number, code);
 		line_number++;
