@@ -8,8 +8,6 @@ stack_t *add_node(stack_t **stack, int argument)
 	if (new_node == NULL)
 	{
 		dprintf(STDERR_FILENO, "Error: malloc failed\n");
-		
-
 		exit(EXIT_FAILURE);
 	}
 
@@ -25,5 +23,5 @@ stack_t *add_node(stack_t **stack, int argument)
 		(*stack)->prev = new_node;
 		*stack = new_node;
 	}
-    return(new_node);
-} 
+	return (new_node);
+}

@@ -1,5 +1,12 @@
 #include "monty.h"
 
+/**
+ * _push -  pushes an element to the stack.
+ * @stack: double pointer to header (top) of the stack.
+ * @line_number: counter for line number of the file.
+ * Return: void.
+ */
+
 void _push(stack_t **stack, unsigned int line_number)
 {
 	size_t i;
@@ -26,7 +33,12 @@ void _push(stack_t **stack, unsigned int line_number)
 	}
 }
 
-
+/**
+ * _pall - print all values on stack starting from the top
+ * @stack: double pointer to head of stack
+ * @line_number: line number being executed from script file
+ * Return: void
+ */
 void _pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *pall;
@@ -37,12 +49,15 @@ void _pall(stack_t **stack, unsigned int line_number)
 	{
 		printf("%d\n", pall->n);
 		pall = pall->next;
-		if (pall == NULL)
-		{
-			return;
-		}
 	}
 }
+
+/**
+ * _pint - prints the value at the top of the stack
+ * @stack: double pointer to header of the stack.
+ * @line_number: counter for line number of the file.
+ * Return: void
+ */
 
 void _pint(stack_t **stack, unsigned int line_number)
 {
