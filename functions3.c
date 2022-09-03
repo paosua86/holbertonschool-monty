@@ -80,14 +80,25 @@ void _pstr(stack_t **stack, unsigned int line_number)
 
 void _rotl(stack_t **stack, unsigned int line_number)
 {
-	(void)line_number;
+	stack_t *rotl = *stack;
+	(void) line_number;
 
-	if (*stack)
-		*stack = (*stack)->next;
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+		return;
+
+	while (rotl->next != NULL)
+		rotl = rotl->next;
+
+	rotl->next = *stack;
+	(*stack)->prev = rotl;
+	rotl->prev = NULL;
+	rotl = (*stack)->next;
+	(*stack)->next = NULL;
+	*stack = rotl;
 }
 
 /**
- * rotr - rotates the stack to the bottom
+ * _rotr - rotates the stack to the bottom
  * @stack: double pointer to header of the stack
  * @line_number: counter for line number of the file
  * Return: void
