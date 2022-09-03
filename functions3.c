@@ -44,8 +44,8 @@ void _pchar(stack_t **stack, unsigned int line_number)
 	}
 	if ((*stack)->n < 0 || (*stack)->n > 127)
 	{
-		dprintf(STDERR_FILENO, "L%d: can't pchar, value out of
-		 range\n", line_number);
+		dprintf(STDERR_FILENO,
+		"L%d: can't pchar, value out of range\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	printf("%c\n", (*stack)->n);
@@ -84,4 +84,18 @@ void _rotl(stack_t **stack, unsigned int line_number)
 
 	if (*stack)
 		*stack = (*stack)->next;
+}
+
+/**
+ * rotr - rotates the stack to the bottom
+ * @stack: double pointer to header of the stack
+ * @line_number: counter for line number of the file
+ * Return: void
+ */
+void _rotr(stack_t **stack, unsigned int line_number)
+{
+	(void)line_number;
+
+	if (*stack)
+		*stack = (*stack)->prev;
 }
