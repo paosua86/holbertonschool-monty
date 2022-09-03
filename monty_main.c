@@ -86,7 +86,7 @@ void get_op(stack_t **stack, unsigned int line_number, char *code)
 		{"mod", _mod},
 		{"pchar", _pchar},
 		{"pstr", _pstr},
-		/*{"rotl", _rotl},*/
+		{"rotl", _rotl},
 		/*{"rotr", _rotr},*/
 		/*{"stack", _stack},*/
 		/*{"queue", _queue},*/

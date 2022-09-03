@@ -69,3 +69,18 @@ void _pstr(stack_t **stack, unsigned int line_number)
     }
     printf("\n");
 }
+
+/**
+ * _rotl - rotates the stack to the top
+ * @stack: double pointer to header of the stack.
+ * @line_number: counter for line number of the file.
+ * Return: void
+ */
+
+void _rotl(stack_t **stack, unsigned int line_number)
+{
+    (void)line_number;
+
+    if (*stack)
+        *stack = (*stack)->next;
+}
