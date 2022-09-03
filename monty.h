@@ -55,8 +55,6 @@ void _pchar(stack_t **stack, unsigned int line_number);
 void _pstr(stack_t **stack, unsigned int line_number);
 void _rotl(stack_t **stack, unsigned int line_number);
 void _rotr(stack_t **stack, unsigned int line_number);
-void _stack(stack_t **stack, unsigned int line_number);
-void _queue(stack_t **stack, unsigned int line_number);
 
 void get_op(stack_t **stack, unsigned int line_number, char *code);
 stack_t *add_node(stack_t **stack, int arg);
