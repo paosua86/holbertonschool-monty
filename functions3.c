@@ -37,17 +37,18 @@ void _mod(stack_t **stack, unsigned int line_number)
 
 void _pchar(stack_t **stack, unsigned int line_number)
 {
-    if (*stack == NULL)
+	if (*stack == NULL)
 	{
 		dprintf(STDERR_FILENO, "L%d: can't pchar, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	if ((*stack)->n < 0 || (*stack)->n > 127)
 	{
-		dprintf(STDERR_FILENO, "L%d: can't pchar, value out of range\n", line_number);
+		dprintf(STDERR_FILENO, "L%d: can't pchar, value out of
+		 range\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-    printf("%c\n", (*stack)->n);
+	printf("%c\n", (*stack)->n);
 }
 
 /**
@@ -59,15 +60,15 @@ void _pchar(stack_t **stack, unsigned int line_number)
 
 void _pstr(stack_t **stack, unsigned int line_number)
 {
-    stack_t *pstr = *stack;
+	stack_t *pstr = *stack;
 
-    (void) line_number;
-    while (pstr != NULL && pstr->n != 0 && pstr->n > 0 && pstr->n <= 127)
-    {
+	(void) line_number;
+	while (pstr != NULL && pstr->n != 0 && pstr->n > 0 && pstr->n <= 127)
+	{
 		printf("%c", pstr->n);
-        pstr = pstr->next;
-    }
-    printf("\n");
+		pstr = pstr->next;
+	}
+	printf("\n");
 }
 
 /**
@@ -79,8 +80,8 @@ void _pstr(stack_t **stack, unsigned int line_number)
 
 void _rotl(stack_t **stack, unsigned int line_number)
 {
-    (void)line_number;
+	(void)line_number;
 
-    if (*stack)
-        *stack = (*stack)->next;
+	if (*stack)
+		*stack = (*stack)->next;
 }
