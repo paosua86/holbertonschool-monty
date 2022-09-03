@@ -105,8 +105,19 @@ void _rotl(stack_t **stack, unsigned int line_number)
  */
 void _rotr(stack_t **stack, unsigned int line_number)
 {
-	(void)line_number;
+	stack_t *rotr = *stack;
+	(void) line_number;
 
-	if (*stack)
-		*stack = (*stack)->prev;
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+		return;
+
+	while (rotr->next != NULL)
+		rotr = rotr->next;
+
+	rotr->next = *stack;
+	(*stack)->prev = rotr;
+	rotr = (*stack)->next;
+	rotr->prev = NULL;
+	(*stack)->next = NULL;
+	*stack = rotr;
 }
